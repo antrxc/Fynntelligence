@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 from openai import OpenAI
 from AgentContracts.PrimaryGen import PRIMARY_GEN_PROMPT
+from tools.doclingConv import DocConvert
 
 # -------------------------------
 # Environment Setup
@@ -79,12 +80,12 @@ def process_file(content: bytes, extension: str) -> str:
 # -------------------------------
 # Main Execution
 # -------------------------------
-def main(URL)
+def main(URL):
     url = URL
     file_content = download_file(url)
-    extension = get_file_extension(url, file_content)
-    processed_content = process_file(file_content, extension)
-
+    #extension = get_file_extension(url, file_content)
+    #processed_content = process_file(file_content, extension)
+    processed_content = DocConvert(url)
     response = client.chat.completions.create(
         model="gemini-2.5-flash",
         messages=[
@@ -98,4 +99,4 @@ def main(URL)
     return outputJSON
 
 inputURL = input("Enter URL: ")
-main(inputURL)
+print(main(inputURL))

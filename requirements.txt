@@ -4,3 +4,5 @@ requests
 pydantic
 PyPDF2
 google-genai
+docling
+fastapi
